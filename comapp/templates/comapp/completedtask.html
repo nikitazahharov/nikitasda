@@ -1,0 +1,34 @@
+<title>Nikitasda - List of all your completed tasks</title>
+{% extends 'comapp/base.html' %}
+
+{% block content %}
+
+
+<style>
+div.parentb {
+	text-align: center;
+	}
+ul.b {
+	display: inline-block;
+	text-align: left;
+	}
+</style>
+
+<h1 style="text-align:center">My Completed Tasks</h1>
+<h6 style="text-align:center">All your completed tasks has a timestamp</h6>
+<br>
+
+<div class="parentb">
+<ul class="b">
+    {% for Task in dotask %}
+    <li>
+        <a href="{% url 'viewtask' Task.id %}">
+        {% if Task.urgent %}<b>{% endif %}{{ Task.title }}{% if Task.urgent %}</b>{% endif %}
+        {% if Task.text %} - {{ Task.text }}{% endif %}
+        {{ Task.datecompleted|date:'M j Y H:i'}}
+        </a>
+    </li><br>
+    {% endfor %}
+</ul>
+
+{% endblock %}

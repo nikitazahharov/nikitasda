@@ -1,0 +1,76 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   text-align: center;
+}
+ul.a {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li.b {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+</style>
+
+
+
+
+<!-- Django python -->
+{% if user.is_authenticated %}
+
+
+<ul class="a">
+  <li class="b"><a href="{% url 'home' %}">Home</a></li>
+  <li class="b"><a href="{% url 'createtask' %}">Create</a></li>
+  <li class="b"><a href="{% url 'currentses' %}">Tasks</a></li>
+  <li class="b"><a href="{% url 'completedtask' %}">Completed</a></li>
+  <li class="b" style="float:right"><a href="#ops"><form action="{% url 'logoutuser' %}" method="POST">{%  csrf_token %}<button type="submit">Logout</button></form></a></li>
+  <li class="b" style="float:right"><a href="">{{ user.username }}</a></li>
+  <li class="b" style="float:right"><a href="https://github.com/nikitazahharov/nikitasda">Github</a></li>
+</ul>
+
+
+{% else %}
+<ul class="a">
+    <li class="b"><a href="{% url 'home' %}">Home</a></li>
+    <li class="b"><a href="https://github.com/nikitazahharov/nikitasda">Github</a></li>
+    <li class="b" style="float:right"><a href="{% url 'signupuser' %}">Sign Up</a></li>
+    <li class="b" style="float:right"><a href="{% url 'loginuser' %}">Login</a></li>
+</ul>
+
+
+{% endif %}
+
+<br>
+<br>
+
+{% block content %}{% endblock %}
+<!-- Django python -->
+
+
+
+<div class="footer">
+  <p><h6 style="text-align:center">Project was made by <a href="https://github.com/nikitazahharov/">Nikita Zahharov</a></h6></p>
+</div>

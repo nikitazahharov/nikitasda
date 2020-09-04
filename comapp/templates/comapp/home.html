@@ -1,0 +1,23 @@
+
+<title>Nikitasda - Home page</title>
+{% extends 'comapp/base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h4 style="text-align:center">Create your tasks now!</h4>
+    <br>
+    <br>
+    <h5 style="text-align:center"><p>It is simple! Click on "Create" button on top navigation bar or click <a href="{% url 'createtask' %}">here</a></p></h5>
+    <h5 style="text-align:center"><p>You can create simple tasks and urgent tasks. Depends what you want</p></h5>
+
+{% else %}
+    <h4 style="text-align:center">Welcome To My Final Project For SDA Academy</h4>
+    <br>
+    <br>
+    <h5 style="text-align:center"><p>This website is online ToDoList and it is for simple Task Management and “Getting Things Done”.</p>
+    <p>Simple list on paper of things “To Do” is not enough for some people.</p> <p>So, I made an online version for people, who wants to keep track of their tasks online.</h5></p>
+
+{% endif %}
+
+{% endblock %}

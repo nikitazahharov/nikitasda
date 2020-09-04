@@ -1,0 +1,25 @@
+<title>Nikitasda - View or Change you task!!!</title>
+{% extends 'comapp/base.html' %}
+
+{% block content %}
+{{ error }}
+
+<h3 style="text-align:center">Task name: {{ gettask.title }}</h3>
+
+<form method="POST">
+{%  csrf_token %}
+{{ form.as_p }}
+<button type="submit">Save</button>
+</form>
+
+<form method="POST" action="{% url 'completetask' gettask.id %}">
+{%  csrf_token %}
+<button type="submit">Complete</button>
+</form>
+
+<form method="POST" action="{% url 'deletetask' gettask.id %}">
+{%  csrf_token %}
+<button type="submit">Delete</button>
+</form>
+
+{% endblock %}

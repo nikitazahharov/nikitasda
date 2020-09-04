@@ -1,0 +1,20 @@
+<title>Nikitasda - Our user came back :)</title>
+{% extends 'comapp/base.html' %}
+
+{% block content %}
+
+
+<h1>Login</h1>
+<h2>{{ error }}</h2>
+
+<form method="POST">
+    {%  csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Login</button>
+</form>
+
+
+
+<a href="{% url 'signupuser' %}">Don't have an account? Create it!</a>
+
+{% endblock %}

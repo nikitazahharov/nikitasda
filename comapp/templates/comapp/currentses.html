@@ -1,0 +1,36 @@
+<title>Nikitasda - List of all your tasks!</title>
+{% extends 'comapp/base.html' %}
+
+{% block content %}
+
+<style>
+div.parent {
+	text-align: center;
+	}
+ul.a {
+	display: inline-block;
+	text-align: left;
+	}
+</style>
+
+<h1 style="text-align:center">List Of All My Tasks</h1>
+<h4 style="text-align:center">All your tasks are ordered. Urgent tasks are first on the list!</h4>
+<h5 style="text-align:center">Complete them first!</h5>
+<br>
+<br>
+
+<div class="parent">
+<ul class="a">
+    {% for Task in dotask %}
+        <li>
+        <a href="{% url 'viewtask' Task.id %}">
+        {% if Task.urgent %}<b>{% endif %}{{ Task.title }}{% if Task.urgent %}</b>{% endif %}
+        {% if Task.text %} - {{ Task.text }}{% endif %}
+        </a>
+        </li><br>
+    {% endfor %}
+</ul>
+</div>
+
+
+{% endblock %}

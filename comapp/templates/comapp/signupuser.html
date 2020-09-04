@@ -1,0 +1,21 @@
+<title>Nikitasda - Sign up is free!</title>
+{% extends 'comapp/base.html' %}
+
+{% block content %}
+
+<h1>Sign up</h1>
+<br>
+
+<h2>{{ error }}</h2>
+
+<form method="POST">
+    {%  csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Sign up</button>
+</form>
+
+<br>
+<h5 style="color:red;">Don't worry about the password.</h5>
+<h5 style="color:red;">You can type any password. Even with 3 characters</h5>
+<h5 style="color:red;">It is just built in django form. Just, i didn't find how can i customize it yet...</h5>
+{% endblock %}
